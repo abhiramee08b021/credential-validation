@@ -6,6 +6,10 @@
     <title>Interactive Report: Blockchain Credential Verification Startup</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script type="module">
+    import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
+    mermaid.initialize({ startOnLoad: true });
+  </script>
     <!-- Visualization & Content Choices: 
         - Executive Summary: Text block (Inform). HTML/Tailwind.
         - The Problem: Bullets, Chart.js Bar Chart for Pain Points (Emphasize issues). HTML/Tailwind, Chart.js.
@@ -167,10 +171,77 @@
                 </div>
                 <div class="bg-white p-6 rounded-lg shadow">
                     <h3 class="text-xl font-semibold text-sky-600 mb-4 text-center">Key Pain Points in Traditional Verification</h3>
-                    <p class="text-center text-slate-600 mb-4">The chart below visualizes the severity of common pain points in the current manual verification processes. Higher bars indicate greater severity.</p>
-                    <div class="chart-container">
-                        <canvas id="painPointsChart"></canvas>
-                    </div>
+                    <pre class="mermaid"> 
+                        sequenceDiagram
+    participant S as Student/Individual
+    participant C as Company/Employer
+    participant U as University/Registrar
+    participant T as Third-party Service<br/>(Optional)
+
+    Note over S,U: 🔴 CURRENT MANUAL PROCESS WITH PAIN POINTS
+
+    rect rgb(255, 240, 240)
+        Note over S: STUDENT PAIN POINTS:<br/>• Manual transcript requests<br/>• Fees for each request ($5-25)<br/>• No control over timing<br/>• Must remember all institutions<br/>• Repetitive process for each job
+    end
+
+    S->>C: 1. Submit job application<br/>with degree claims
+    
+    rect rgb(255, 248, 240)
+        Note over C: COMPANY PAIN POINTS:<br/>• Cannot verify claims immediately<br/>• Manual outreach required<br/>• 3-10 day verification delays<br/>• Inconsistent response formats<br/>• High administrative costs<br/>• Risk of fraud/fake degrees
+    end
+
+    C->>S: 2. Request official transcripts<br/>or degree verification
+    
+    alt Student requests transcripts
+        S->>U: 3a. Contact registrar office<br/>(phone/email/portal)
+        
+        rect rgb(248, 255, 248)
+            Note over U: UNIVERSITY PAIN POINTS:<br/>• High volume of manual requests<br/>• Staff time for each verification<br/>• Legacy systems and processes<br/>• Paper-based workflows<br/>• Revenue opportunity missed<br/>• Fraud prevention burden
+        end
+        
+        U->>S: 4a. Request student info verification<br/>+ payment ($10-25)
+        S->>U: 5a. Provide ID + payment
+        
+        Note right of U: ⏰ DELAY: 3-7 business days<br/>for processing
+        
+        U->>S: 6a. Mail/email official transcript
+        S->>C: 7a. Forward transcript to employer
+        
+    else Company requests directly
+        C->>U: 3b. Contact university directly<br/>for degree verification
+        
+        Note right of U: ❌ VERIFICATION CHALLENGES:<br/>• University may not respond<br/>• FERPA privacy restrictions<br/>• Need student consent<br/>• Inconsistent processes
+        
+        U->>C: 4b. Request written authorization<br/>from student
+        C->>S: 5b. Request signed consent form
+        S->>C: 6b. Return signed form
+        C->>U: 7b. Submit authorization
+        
+        Note right of U: ⏰ DELAY: 5-10 business days<br/>total processing time
+        
+        U->>C: 8b. Provide degree verification<br/>(letter/email/phone)
+        
+    else Using third-party service
+        C->>T: 3c. Submit verification request<br/>+ pay service fee ($15-50)
+        T->>U: 4c. Contact university
+        T->>S: 5c. May need student authorization
+        
+        Note right of T: 🔴 ADDITIONAL PROBLEMS:<br/>• Extra middleman costs<br/>• Longer processing chains<br/>• Data privacy concerns<br/>• Service reliability issues
+        
+        U->>T: 6c. Provide verification
+        T->>C: 7c. Deliver formatted report
+    end
+    
+    rect rgb(255, 245, 245)
+        Note over C: FINAL COMPANY ACTIONS:<br/>• Manually review verification<br/>• Update candidate records<br/>• Make hiring decision<br/>• File documentation
+    end
+    
+    C->>C: 8. Process verification result<br/>and make hiring decision
+
+    rect rgb(245, 245, 255)
+        Note over S,U: 🔴 SYSTEMIC PROBLEMS:<br/>• No standardization across institutions<br/>• Prone to document fraud<br/>• Poor user experience for all parties<br/>• High costs and time delays<br/>• Limited audit trails<br/>• Privacy and consent complications<br/>• Cannot verify in real-time
+    end
+                    </pre>
                 </div>
             </section>
 
