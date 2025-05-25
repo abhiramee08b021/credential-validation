@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Digital Wallet: Manage Your Credentials</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+       .sidebar-link { display: block; padding: 0.75rem 1rem; margin-bottom: 0.5rem; border-radius: 0.5rem; transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out; }
+       .sidebar-link:hover { background-color: #e2e8f0; color: #0284c7; }
+       .sidebar-link.active { background-color: #0ea5e9; color: white; }
+       .credential-card { background-color: #f8fafc; border: 1px solid #e2e8f0; border-radius: 0.5rem; padding: 1rem; margin-bottom: 1rem; box-shadow: 0 1px 2px rgba(0,0,0,0.05); }
+       .credential-preview { border: 1px solid #cbd5e1; border-radius: 0.5rem; padding: 1.5rem; background-color: #ffffff; text-align: center; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
+       .share-options { display: none; margin-top: 1rem; padding-top: 1rem; border-top: 1px solid #e2e8f0; }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800">
+    <div class="flex flex-col md:flex-row min-h-screen">
+        <aside class="w-full md:w-64 bg-white p-4 shadow-lg md:sticky md:top-0 md:h-screen overflow-y-auto">
+            <h1 class="text-2xl font-bold text-sky-600 mb-6 border-b border-slate-300 pb-3">My Wallet</h1>
+            <nav>
+                <a href="#" class="sidebar-link active">My Credentials</a>
+                <a href="#" class="sidebar-link">Share History</a>
+                <a href="#" class="sidebar-link">Settings</a>
+            </nav>
+        </aside>
+
+        <main class="flex-1 p-6 md:p-10 overflow-y-auto">
+            <h2 class="text-3xl font-semibold text-sky-600 mb-6">My Credentials</h2>
+
+            <div class="bg-white p-8 rounded-lg shadow-md mb-8">
+                <h3 class="text-xl font-semibold text-emerald-600 mb-4">Your Verifiable Credentials</h3>
+                
+                <div class="credential-card">
+                    <div class="flex justify-between items-center mb-2">
+                        <h4 class="text-lg font-semibold text-slate-900">Bachelor of Science in Computer Science</h4>
+                        <span class="text-sm text-green-600 font-medium">Verified <span class="text-green-600">&#10003;</span></span>
+                    </div>
+                    <p class="text-slate-700 mb-2">University of Example | Graduated: May 25, 2025</p>
+                    <button class="bg-sky-500 hover:bg-sky-600 text-white text-sm font-semibold py-1.5 px-3 rounded-md mr-2" onclick="toggleShareOptions('degree')">Share Credential</button>
+                    <button class="bg-slate-200 hover:bg-slate-300 text-slate-800 text-sm font-semibold py-1.5 px-3 rounded-md" onclick="viewCredential('degree')">View Details</button>
+
+                    <div id="shareOptions-degree" class="share-options">
+                        <p class="text-sm font-medium text-slate-700 mb-2">Select information to share (Selective Disclosure): [5, 2]</p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <label class="inline-flex items-center">
+                                <input type="checkbox" class="form-checkbox text-sky-600" checked>
+                                <span class="ml-2 text-slate-700">Degree Type</span>
+                            </label>
+                            <label class="inline-flex items-center">
+                                <input type="checkbox" class="form-checkbox text-sky-600" checked>
+                                <span class="ml-2 text-slate-700">University Name</span>
+                            </label>
+                            <label class="inline-flex items-center">
+                                <input type="checkbox" class="form-checkbox text-sky-600" checked>
+                                <span class="ml-2 text-slate-700">Graduation Date</span>
+                            </label>
+                            <label class="inline-flex items-center">
+                                <input type="checkbox" class="form-checkbox text-sky-600">
+                                <span class="ml-2 text-slate-700">GPA (Optional)</span>
+                            </label>
+                            <label class="inline-flex items-center">
+                                <input type="checkbox" class="form-checkbox text-sky-600">
+                                <span class="ml-2 text-slate-700">Full Transcript (Optional)</span>
+                            </label>
+                        </div>
+                        <button class="bg-emerald-600 hover:bg-emerald-700 text-white text-sm font-semibold py-1.5 px-3 rounded-md" onclick="generateShareLink('degree')">Generate Share Link</button>
+                        <p id="shareLink-degree" class="text-sm text-slate-600 mt-2 break-all hidden">
+                            Share this link: <a href="#" class="text-sky-600 hover:underline">https://yourwallet.com/verify/john-doe-bsc-comp-sci-xyz123</a> (Expires in 24h)
+                        </p>
+                    </div>
+                </div>
+
+                <div class="credential-card">
+                    <div class="flex justify-between items-center mb-2">
+                        <h4 class="text-lg font-semibold text-slate-900">Software Engineer at TechCorp Inc.</h4>
+                        <span class="text-sm text-green-600 font-medium">Verified <span class="text-green-600">&#10003;</span></span>
+                    </div>
+                    <p class="text-slate-700 mb-2">Dates: Jan 2022 - Present | Role: Full-stack Development</p>
+                    <button class="bg-sky-500 hover:bg-sky-600 text-white text-sm font-semibold py-1.5 px-3 rounded-md mr-2" onclick="toggleShareOptions('employment')">Share Credential</button>
+                    <button class="bg-slate-200 hover:bg-slate-300 text-slate-800 text-sm font-semibold py-1.5 px-3 rounded-md" onclick="viewCredential('employment')">View Details</button>
+
+                    <div id="shareOptions-employment" class="share-options">
+                        <p class="text-sm font-medium text-slate-700 mb-2">Select information to share (Selective Disclosure): [5, 2]</p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <label class="inline-flex items-center">
+                                <input type="checkbox" class="form-checkbox text-sky-600" checked>
+                                <span class="ml-2 text-slate-700">Company Name</span>
+                            </label>
+                            <label class="inline-flex items-center">
+                                <input type="checkbox" class="form-checkbox text-sky-600" checked>
+                                <span class="ml-2 text-slate-700">Job Title</span>
+                            </label>
+                            <label class="inline-flex items-center">
+                                <input type="checkbox" class="form-checkbox text-sky-600" checked>
+                                <span class="ml-2 text-slate-700">Employment Dates</span>
+                            </label>
+                            <label class="inline-flex items-center">
+                                <input type="checkbox" class="form-checkbox text-sky-600">
+                                <span class="ml-2 text-slate-700">Reason for Leaving (Optional)</span>
+                            </label>
+                            <label class="inline-flex items-center">
+                                <input type="checkbox" class="form-checkbox text-sky-600">
+                                <span class="ml-2 text-slate-700">Eligibility for Re-hire (Optional)</span>
+                            </label>
+                        </div>
+                        <button class="bg-emerald-600 hover:bg-emerald-700 text-white text-sm font-semibold py-1.5 px-3 rounded-md" onclick="generateShareLink('employment')">Generate Share Link</button>
+                        <p id="shareLink-employment" class="text-sm text-slate-600 mt-2 break-all hidden">
+                            Share this link: <a href="#" class="text-sky-600 hover:underline">https://yourwallet.com/verify/john-doe-techcorp-inc-abc456</a> (Expires in 24h)
+                        </p>
+                    </div>
+                </div>
+
+                <p class="text-sm text-slate-500 mt-6 text-center">
+                    Your credentials are stored securely in your wallet and anchored on the blockchain, giving you full control over your data. [5, 2]
+                </p>
+            </div>
+
+            <h3 class="text-2xl font-semibold text-sky-600 mb-4">Sample Credential View (Digital Diploma)</h3>
+            <div class="bg-white p-6 rounded-lg shadow-md">
+                <div class="credential-preview">
+                    <img src="https://via.placeholder.com/80x80.png?text=University+Logo" alt="University Logo" class="mx-auto mb-4">
+                    <h4 class="text-2xl font-bold text-sky-700 mb-2">UNIVERSITY OF EXAMPLE</h4>
+                    <p class="text-lg text-slate-600 mb-4">Hereby certifies that</p>
+                    <h3 class="text-4xl font-extrabold text-emerald-700 mb-4">JOHN DOE</h3>
+                    <p class="text-lg text-slate-600 mb-2">has successfully completed the requirements for the degree of</p>
+                    <h4 class="text-3xl font-bold text-sky-700 mb-4">BACHELOR OF SCIENCE</h4>
+                    <p class="text-lg text-slate-600 mb-2">in</p>
+                    <h4 class="text-2xl font-bold text-emerald-700 mb-4">COMPUTER SCIENCE</h4>
+                    <p class="text-md text-slate-600 mb-2">Conferred on May 25, 2025</p>
+                    <p class="text-sm text-slate-500 mt-6">
+                        <span class="font-semibold">Credential ID:</span> 0xabc123def456...<br>
+                        <span class="font-semibold">Blockchain Anchor:</span> 0x789ghi0jkl123...<br>
+                        <span class="font-semibold">Issued by:</span> University of Example (DID: did:ex:uni123...)<br>
+                        <span class="font-semibold">Status:</span> Verified on Blockchain <span class="text-green-600">&#10003;</span>
+                    </p>
+                    <p class="text-xs text-slate-400 mt-4">This digital credential is tamper-proof and verifiable on the blockchain. [4, 2]</p>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        function toggleShareOptions(id) {
+            const optionsDiv = document.getElementById(`shareOptions-${id}`);
+            optionsDiv.style.display = optionsDiv.style.display === 'block'? 'none' : 'block';
+            document.getElementById(`shareLink-${id}`).classList.add('hidden'); // Hide link when toggling options
+        }
+
+        function generateShareLink(id) {
+            const shareLinkP = document.getElementById(`shareLink-${id}`);
+            shareLinkP.classList.remove('hidden');
+            // In a real app, this would generate a unique, time-limited link based on selected checkboxes
+        }
+
+        function viewCredential(type) {
+            alert(`Viewing full details for ${type} credential. In a real app, this would open a detailed view of the credential.`);
+        }
+    </script>
+</body>
+</html>
