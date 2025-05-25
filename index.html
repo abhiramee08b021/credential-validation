@@ -14,7 +14,6 @@
         - Executive Summary: Text block (Inform). HTML/Tailwind.
         - The Problem: Bullets, Chart.js Bar Chart for Pain Points (Emphasize issues). HTML/Tailwind, Chart.js.
         - Our Solution (End-to-End Flow): Interactive HTML/CSS/JS diagram (Explain process). HTML/Tailwind/JS.
-        - Market Opportunity: Stats, Chart.js Pie Chart for Market Drivers (Highlight potential). HTML/Tailwind, Chart.js.
         - Current Landscape: Interactive HTML Table (Compare alternatives). HTML/Tailwind/JS.
         - Product Vision: Accordion for Epics/Requirements (Detail features). HTML/Tailwind/JS.
         - Technical Deep Dive: Thematic text blocks (Explain tech). HTML/Tailwind.
@@ -118,7 +117,6 @@
                 <a href="#problem-statement" class="sidebar-link">The Problem</a>
                 <a href="#current-landscape" class="sidebar-link">Current Landscape</a>
                 <a href="#our-solution" class="sidebar-link">Our Solution</a>
-                <a href="#market-opportunity" class="sidebar-link">Market Opportunity</a>
                 <a href="#product-vision" class="sidebar-link">Product Vision</a>
                 <a href="#technical-deep-dive" class="sidebar-link">Technical Deep Dive</a>
                 <a href="#strategic-recommendations" class="sidebar-link">Strategic Recommendations</a>
@@ -409,7 +407,7 @@
 
             <section id="product-vision" class="content-section">
                 <h2 class="text-3xl font-semibold text-sky-600 mb-4">Product Vision: Epics & Requirements</h2>
-                <p class="mb-6 text-lg leading-relaxed">Our product development will be structured around key epics, each with specific business and product requirements to deliver a comprehensive and user-centric platform. Click on an epic to see its requirements.</p>
+                <p class="mb-6 text-lg leading-relaxed">Breakdown of the overall platform into key epics, each with specific business and product requirements. Click on an epic to see its requirements.</p>
                 <div id="epicsAccordion" class="bg-white rounded-lg shadow">
                     </div>
             </section>
@@ -546,14 +544,13 @@
             
             const epicsData = [
                 {
-                    title: "Epic 1: Credential Issuance & Anchoring",
+                    title: "Epic 1: Credential Issuance Portal (for universities and employers)",
                     requirements: [
                         "PR.1.1. User-friendly Issuer Interface (web) for manual creation.",
                         "PR.1.2. Robust API for automated bulk issuance from SIS/HRIS.",
-                        "PR.1.3. Issuer cryptographic signing of credentials.",
-                        "PR.1.4. Secure blockchain anchoring of credential hashes.",
-                        "PR.1.5. Customizable credential templates with branding.",
-                        "PR.1.6. Secure and auditable credential revocation mechanism."
+                        "PR.1.3. Customizable credential templates with university, company branding.",
+                        "PR.1.4. Issuer cryptographic signing of credentials for immutability.",
+                        "PR.1.5. Secure and auditable credential revocation mechanism."
                     ]
                 },
                 {
@@ -577,21 +574,11 @@
                     ]
                 },
                 {
-                    title: "Epic 4: API & Integration Layer",
+                    title: "Epic 4: Platform Administration & Analytics",
                     requirements: [
-                        "PR.4.1. Adherence to RESTful API design principles.",
-                        "PR.4.2. Secure OAuth 2.0 authentication for API access.",
-                        "PR.4.3. Standardized data formats (JSON/XML).",
-                        "PR.4.4. Real-time webhooks/notifications for updates.",
-                        "PR.4.5. Comprehensive, developer-friendly API documentation."
-                    ]
-                },
-                {
-                    title: "Epic 5: Platform Administration & Analytics",
-                    requirements: [
-                        "PR.5.1. Admin Dashboard for managing users, issuers, system health.",
-                        "PR.5.2. Usage analytics on issuance, verification volume, activity.",
-                        "PR.5.3. Reporting on key metrics for business analysis."
+                        "PR.4.1. Admin Dashboard for managing users, issuers, system health.",
+                        "PR.4.2. Usage analytics on issuance, verification volume, activity.",
+                        "PR.4.3. Reporting on key metrics for business analysis."
                     ]
                 },
                 {
@@ -599,10 +586,8 @@
                     requirements: [
                         "PR.6.1. End-to-end encryption of data in transit and at rest.",
                         "PR.6.2. Role-Based Access Control (RBAC).",
-                        "PR.6.3. Robust employee consent management with notifications.",
-                        "PR.6.4. Regular third-party security audits (e.g., SOC2 Type 2).",
-                        "PR.6.5. Built-in features for GDPR, FERPA, FCRA compliance.",
-                        "PR.6.6. Immutable audit trails via blockchain."
+                        "PR.6.3. Built-in features for GDPR, FERPA, FCRA compliance.",
+                        "PR.6.4. Immutable audit trails via blockchain."
                     ]
                 }
             ];
