@@ -264,90 +264,51 @@
                 <p class="text-center text-slate-600 mb-6">The following diagram illustrates the key stages and interactions within our proposed system. Hover over elements for more details.</p>
                 
                 <div class="bg-white p-6 rounded-lg shadow">
-                    <div class="grid md:grid-cols-3 gap-4 items-start mb-6">
-                        <div class="flow-node actor">
-                            Individual (Holder)
-                            <div class="tooltip">The student/employee who owns and controls their verifiable credentials.</div>
-                        </div>
-                        <div class="flow-node actor">
-                            Issuer (University/Employer)
-                            <div class="tooltip">The entity (e.g., university, company) that creates and issues digital credentials.</div>
-                        </div>
-                        <div class="flow-node actor">
-                            Verifier (Company)
-                            <div class="tooltip">The entity (e.g., hiring company) that requests to validate an individual's credentials.</div>
-                        </div>
-                    </div>
+                    <pre class="mermaid"> 
+                        sequenceDiagram
+    participant S as Student/Individual
+    participant U as University
+    participant P as Platform
+    participant C as Company/Verifier
+    participant B as Blockchain
 
-                    <div class="text-center my-4">
-                        <h4 class="text-lg font-medium text-sky-500">Stage 1: Credential Issuance & Anchoring</h4>
-                    </div>
-                    <div class="flow-node component">
-                        Issuer creates digital credential (e.g., e-degree)
-                        <div class="tooltip">1.1. Issuer uses platform API/UI to create a Verifiable Credential (VC).</div>
-                    </div>
-                    <div class="flow-arrow"></div>
-                    <div class="flow-node component">
-                        Platform cryptographically signs VC & anchors hash on Blockchain
-                        <div class="tooltip">1.2. VC signed by Issuer's DID. <br>1.3. Hash of VC anchored on blockchain for immutability.</div>
-                    </div>
-                    <div class="flow-arrow"></div>
-                     <div class="flow-node component">
-                        Securely deliver signed VC to Individual's Wallet
-                        <div class="tooltip">1.4. VC delivered to Individual's secure digital wallet (DID & VC Wallet).</div>
-                    </div>
+    Note over U,P: 1. Credential Creation Phase
+    U->>P: Upload student credential data
+    P->>B: Store immutable credential hash
+    P->>S: Notify credential available
+    S->>P: Accept/claim credential
 
-                    <div class="text-center my-4">
-                        <h4 class="text-lg font-medium text-sky-500">Stage 2: Credential Sharing & Request</h4>
-                    </div>
-                    <div class="flow-node component">
-                        Individual generates Verifiable Presentation (VP) with Selective Disclosure
-                        <div class="tooltip">2.1. Individual uses wallet to create a VP, choosing what data to share.</div>
-                    </div>
-                    <div class="flow-arrow"></div>
-                    <div class="flow-node component">
-                        Individual shares unique URL/QR for VP with Verifier
-                        <div class="tooltip">2.2. Secure, time-limited link/QR code shared for verification.</div>
-                    </div>
-                     <p class="text-center my-2 text-slate-600 italic">OR (Alternative Path)</p>
-                    <div class="flow-node component">
-                        Issuer grants read access to Verifier via Platform API/UI
-                        <div class="tooltip">2.3. If Verifier requests directly from Issuer, Issuer can grant access.</div>
-                    </div>
+    Note over S,C: 2. Job Application Phase  
+    S->>C: Apply for position
+    C->>S: Request credential verification
+    S->>P: Generate sharing token/URL
+    S->>C: Provide verification link
 
-                    <div class="text-center my-4">
-                        <h4 class="text-lg font-medium text-sky-500">Stage 3: Credential Verification</h4>
-                    </div>
-                     <div class="flow-node component">
-                        Verifier requests verification via URL/QR or API
-                        <div class="tooltip">3.1. Verifier uses shared link or API to initiate verification.</div>
-                    </div>
-                    <div class="flow-arrow"></div>
-                    <div class="flow-node component">
-                        Platform retrieves Issuer's public key (DID) & verifies signatures
-                        <div class="tooltip">3.2 & 3.3. System verifies Issuer's signature on VC & Individual's on VP.</div>
-                    </div>
-                     <div class="flow-arrow"></div>
-                    <div class="flow-node component">
-                        Platform checks Blockchain anchor & applies ZKPs (if applicable)
-                        <div class="tooltip">3.4. Confirms immutability & revocation status. <br>3.5. Zero-Knowledge Proofs for privacy-preserving selective disclosure.</div>
-                    </div>
-                    <div class="flow-arrow"></div>
-                    <div class="flow-node component">
-                        Instant, cryptographically verified confirmation to Verifier
-                        <div class="tooltip">3.6. Verifier receives immediate, trustworthy confirmation.</div>
-                    </div>
+    Note over C,B: 3. Verification Phase
+    C->>P: Access credential via link
+    P->>B: Verify credential authenticity
+    P->>U: Confirm credential validity (if needed)
+    P->>C: Return verified credential data
+    
+    Note over P,S: 4. Alternative Direct Request
+    C->>P: Direct verification request
+    P->>S: Request consent for sharing
+    S->>P: Grant/deny permission
+    P->>C: Return verification result
 
-                    <div class="mt-8 grid md:grid-cols-2 gap-4">
-                         <div class="flow-node component">
-                            API: Issuer Write API
-                            <div class="tooltip">For bulk issuance from University SIS / Employer HRIS.</div>
-                        </div>
-                        <div class="flow-node component">
-                            API: Verifier Read API
-                            <div class="tooltip">For integration with Company ATS / HR systems.</div>
-                        </div>
-                    </div>
+    Note over P: 5. API Integration
+    P->>P: Log all verification events
+    P->>U: Analytics dashboard
+    P->>C: Integration with HR systems
+                    
+                    </pre>
+
+                    
+
+                    
+
+                    
+                    
                 </div>
             </section>
 
