@@ -116,9 +116,9 @@
             <nav id="mainNav">
                 <a href="#executive-summary" class="sidebar-link active">Executive Summary</a>
                 <a href="#problem-statement" class="sidebar-link">The Problem</a>
-                <a href="#our-solution" class="sidebar-link">Our Solution & Flow</a>
+                <a href="#our-solution" class="sidebar-link">Our Solution</a>
                 <a href="#market-opportunity" class="sidebar-link">Market Opportunity</a>
-                <a href="#competitive-landscape" class="sidebar-link">Competitive Landscape</a>
+                <a href="#current-landscape" class="sidebar-link">Current Landscape</a>
                 <a href="#product-vision" class="sidebar-link">Product Vision</a>
                 <a href="#technical-deep-dive" class="sidebar-link">Technical Deep Dive</a>
                 <a href="#strategic-recommendations" class="sidebar-link">Strategic Recommendations</a>
@@ -129,14 +129,14 @@
             <section id="executive-summary" class="content-section active">
                 <h2 class="text-3xl font-semibold text-sky-600 mb-4">Executive Summary</h2>
                 <div class="bg-white p-6 rounded-lg shadow">
-                    <p class="mb-3">The contemporary landscape of academic and professional credential verification is predominantly characterized by manual, labor-intensive processes. These traditional methods involve a complex interplay of actions by individuals, educational institutions, and companies. The reliance on these manual processes creates significant challenges and pain points across all involved parties, impacting efficiency, accuracy, security, and trust.</p>
+                    <p class="mb-3"> The contemporary landscape of academic and professional credential verification is predominantly characterized by manual, labor-intensive processes. These traditional methods involve a complex interplay of actions by individuals, educational institutions, and companies. The reliance on these manual processes creates significant challenges and pain points across all involved parties, impacting efficiency, accuracy, security, and trust.</p>
                     <p class="mb-3"> We envision a platform for automating both degree and employement verification reducing manual and repetitive effort for credential issuers and verifiers, and providing instantaneous verification. It is powered by blockchain to ensure highest level of security and build trust. It creates a standardized, interoperable system to brdige disparate systems across universities, and employers while providing robust API access to integrate with their existing systems such as Student Information Systems (SIS), HR Information systems (HRIS), Applicant Tracking Systems (ATS) </p>
+                    <p class="mb-3"> Similar to how Stripe standardised across disparate payment methods across marketplaces, we will integrate across different regions and tools, providing a one-stop shop for all credential validation. </p>
                 </div>
             </section>
 
             <section id="problem-statement" class="content-section">
                 <h2 class="text-3xl font-semibold text-sky-600 mb-4">The Problem: Current State of Verification</h2>
-                <p class="mb-6 text-lg leading-relaxed">Traditional credential verification is manual, time-consuming, and prone to errors and fraud. This section explores the key actions and pain points for individuals, universities, and companies.</p>
                 <div class="grid md:grid-cols-2 gap-6 mb-8">
                     <div class="bg-white p-6 rounded-lg shadow">
                         <h3 class="text-xl font-semibold text-emerald-600 mb-3">Challenges for Individuals</h3>
@@ -163,7 +163,6 @@
                             <li>High risk of human errors and inconsistent vetting.</li>
                             <li>Pervasive risk of resume fraud and forged documents (58% caught lies, 30% exaggerated education).</li>
                             <li>Incomplete visibility into candidate background.</li>
-                            <li>Security vulnerabilities (data breaches, identity theft).</li>
                         </ul>
                     </div>
                 </div>
@@ -243,18 +242,80 @@
                 </div>
             </section>
 
+
+            <section id="current-landscape" class="content-section">
+                <h2 class="text-3xl font-semibold text-sky-600 mb-4">Current Landscape</h2>
+                <p class="mb-6 text-lg leading-relaxed">There are some established centralized players such as Parchment or NSC but there is no market leader that includes both education and employement verification, and works across markets. </p>
+                <div class="bg-white p-1 rounded-lg shadow overflow-x-auto">
+                    <table id="competitorsTable" class="min-w-full divide-y divide-slate-200">
+                        <thead class="bg-slate-100">
+                            <tr>
+                                <th class="px-4 py-3 text-left text-xs font-medium text-slate-600 uppercase tracking-wider cursor-pointer">Company/Platform</th>
+                                <th class="px-4 py-3 text-left text-xs font-medium text-slate-600 uppercase tracking-wider cursor-pointer">Primary Focus</th>
+                                <th class="px-4 py-3 text-left text-xs font-medium text-slate-600 uppercase tracking-wider cursor-pointer">Core Technology</th>
+                                <th class="px-4 py-3 text-left text-xs font-medium text-slate-600 uppercase tracking-wider">Key Differentiators/Limitations</th>
+                            </tr>
+                        </thead>
+                        <tbody class="bg-white divide-y divide-slate-200 text-sm text-slate-700">
+                            <tr>
+                                <td class="px-4 py-3 whitespace-nowrap font-medium">Parchment</td>
+                                <td class="px-4 py-3 whitespace-nowrap">Education</td>
+                                <td class="px-4 py-3 whitespace-nowrap">Centralized Digital Platform</td>
+                                <td class="px-4 py-3">Largest network, high efficiency. Centralized trust.</td>
+                            </tr>
+                            <tr>
+                                <td class="px-4 py-3 whitespace-nowrap font-medium">National Student Clearinghouse (NSC)</td>
+                                <td class="px-4 py-3 whitespace-nowrap">Education</td>
+                                <td class="px-4 py-3 whitespace-nowrap">Centralized Authoritative Database</td>
+                                <td class="px-4 py-3">Widely adopted in U.S. Not blockchain; limited privacy control.</td>
+                            </tr>
+                            <tr>
+                                <td class="px-4 py-3 whitespace-nowrap font-medium">Accredible</td>
+                                <td class="px-4 py-3 whitespace-nowrap">Education (Digital Credentials)</td>
+                                <td class="px-4 py-3 whitespace-nowrap">Digital Credential Platform</td>
+                                <td class="px-4 py-3">Brand enhancement, customization. Not blockchain-native.</td>
+                            </tr>
+                            <tr>
+                                <td class="px-4 py-3 whitespace-nowrap font-medium">BCdiploma</td>
+                                <td class="px-4 py-3 whitespace-nowrap">Education (Blockchain Credentials)</td>
+                                <td class="px-4 py-3 whitespace-nowrap">Blockchain-powered Software</td>
+                                <td class="px-4 py-3">Strong blockchain focus, tamper-proof, no intermediaries. Primarily education.</td>
+                            </tr>
+                            <tr>
+                                <td class="px-4 py-3 whitespace-nowrap font-medium">TrueProfile.io</td>
+                                <td class="px-4 py-3 whitespace-nowrap">Education & Employment (Healthcare)</td>
+                                <td class="px-4 py-3 whitespace-nowrap">PSV + Blockchain</td>
+                                <td class="px-4 py-3">Combines PSV with blockchain; niche healthcare focus.</td>
+                            </tr>
+                             <tr>
+                                <td class="px-4 py-3 whitespace-nowrap font-medium">EmpInfo</td>
+                                <td class="px-4 py-3 whitespace-nowrap">Employment & Income</td>
+                                <td class="px-4 py-3 whitespace-nowrap">Centralized Automated Platform</td>
+                                <td class="px-4 py-3">Strong security/privacy. Not blockchain; limited employee control.</td>
+                            </tr>
+                            <tr>
+                                <td class="px-4 py-3 whitespace-nowrap font-medium">The Work Number (Equifax)</td>
+                                <td class="px-4 py-3 whitespace-nowrap">Employment & Income</td>
+                                <td class="px-4 py-3 whitespace-nowrap">Centralized Automated Platform</td>
+                                <td class="px-4 py-3">Deep ERP integration, FCRA compliant. Not blockchain.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+
+            
             <section id="our-solution" class="content-section">
-                <h2 class="text-3xl font-semibold text-sky-600 mb-4">Solution: A Platform that Verification</h2>
-                <p class="mb-6 text-lg leading-relaxed">A platform leveraging blockchain, Decentralized Identifiers (DIDs), and Verifiable Credentials (VCs) to offer a secure, transparent, and efficient verification process. Individuals gain control over their data with Self-Sovereign Identity (SSI) principles.</p>
+                <h2 class="text-3xl font-semibold text-sky-600 mb-4"> Our Solution</h2>
                 
                 <div class="bg-white p-6 rounded-lg shadow mb-8">
                     <h3 class="text-xl font-semibold text-emerald-600 mb-3">Core Benefits</h3>
                     <ul class="list-disc list-inside space-y-2 text-slate-700">
                         <li><strong class="text-slate-900">Immutability & Trust:</strong> Credentials anchored on the blockchain are tamper-proof.</li>
                         <li><strong class="text-slate-900">Efficiency:</strong> Near-instant verification reduces hiring times significantly.</li>
-                        <li><strong class="text-slate-900">Individual Control:</strong> SSI empowers users with data ownership and selective disclosure.</li>
-                        <li><strong class="text-slate-900">Reduced Fraud:</strong> Cryptographic security makes forgery extremely difficult.</li>
-                        <li><strong class="text-slate-900">Interoperability:</strong> APIs for seamless integration with existing HR and SIS systems.</li>
+                        <li><strong class="text-slate-900">Individual Control:</strong> SSI empowers individuals with data ownership and selective disclosure.</li>
+                        <li><strong class="text-slate-900">Interoperability:</strong> APIs for seamless integration with existing HR and SIS systems globally.</li>
                     </ul>
                 </div>
 
@@ -344,67 +405,7 @@
                 </div>
             </section>
 
-            <section id="competitive-landscape" class="content-section">
-                <h2 class="text-3xl font-semibold text-sky-600 mb-4">Competitive Landscape</h2>
-                <p class="mb-6 text-lg leading-relaxed">The credential verification market includes established centralized players and emerging blockchain solutions. Our unified approach for both education and employment offers a distinct advantage. Click on table headers to sort (conceptual).</p>
-                <div class="bg-white p-1 rounded-lg shadow overflow-x-auto">
-                    <table id="competitorsTable" class="min-w-full divide-y divide-slate-200">
-                        <thead class="bg-slate-100">
-                            <tr>
-                                <th class="px-4 py-3 text-left text-xs font-medium text-slate-600 uppercase tracking-wider cursor-pointer">Company/Platform</th>
-                                <th class="px-4 py-3 text-left text-xs font-medium text-slate-600 uppercase tracking-wider cursor-pointer">Primary Focus</th>
-                                <th class="px-4 py-3 text-left text-xs font-medium text-slate-600 uppercase tracking-wider cursor-pointer">Core Technology</th>
-                                <th class="px-4 py-3 text-left text-xs font-medium text-slate-600 uppercase tracking-wider">Key Differentiators/Limitations</th>
-                            </tr>
-                        </thead>
-                        <tbody class="bg-white divide-y divide-slate-200 text-sm text-slate-700">
-                            <tr>
-                                <td class="px-4 py-3 whitespace-nowrap font-medium">Parchment</td>
-                                <td class="px-4 py-3 whitespace-nowrap">Education</td>
-                                <td class="px-4 py-3 whitespace-nowrap">Centralized Digital Platform</td>
-                                <td class="px-4 py-3">Largest network, high efficiency. Centralized trust.</td>
-                            </tr>
-                            <tr>
-                                <td class="px-4 py-3 whitespace-nowrap font-medium">National Student Clearinghouse (NSC)</td>
-                                <td class="px-4 py-3 whitespace-nowrap">Education</td>
-                                <td class="px-4 py-3 whitespace-nowrap">Centralized Authoritative Database</td>
-                                <td class="px-4 py-3">Widely adopted in U.S. Not blockchain; limited privacy control.</td>
-                            </tr>
-                            <tr>
-                                <td class="px-4 py-3 whitespace-nowrap font-medium">Accredible</td>
-                                <td class="px-4 py-3 whitespace-nowrap">Education (Digital Credentials)</td>
-                                <td class="px-4 py-3 whitespace-nowrap">Digital Credential Platform</td>
-                                <td class="px-4 py-3">Brand enhancement, customization. Not blockchain-native.</td>
-                            </tr>
-                            <tr>
-                                <td class="px-4 py-3 whitespace-nowrap font-medium">BCdiploma</td>
-                                <td class="px-4 py-3 whitespace-nowrap">Education (Blockchain Credentials)</td>
-                                <td class="px-4 py-3 whitespace-nowrap">Blockchain-powered Software</td>
-                                <td class="px-4 py-3">Strong blockchain focus, tamper-proof, no intermediaries. Primarily education.</td>
-                            </tr>
-                            <tr>
-                                <td class="px-4 py-3 whitespace-nowrap font-medium">TrueProfile.io</td>
-                                <td class="px-4 py-3 whitespace-nowrap">Education & Employment (Healthcare)</td>
-                                <td class="px-4 py-3 whitespace-nowrap">PSV + Blockchain</td>
-                                <td class="px-4 py-3">Combines PSV with blockchain; niche healthcare focus.</td>
-                            </tr>
-                             <tr>
-                                <td class="px-4 py-3 whitespace-nowrap font-medium">EmpInfo</td>
-                                <td class="px-4 py-3 whitespace-nowrap">Employment & Income</td>
-                                <td class="px-4 py-3 whitespace-nowrap">Centralized Automated Platform</td>
-                                <td class="px-4 py-3">Strong security/privacy. Not blockchain; limited employee control.</td>
-                            </tr>
-                            <tr>
-                                <td class="px-4 py-3 whitespace-nowrap font-medium">The Work Number (Equifax)</td>
-                                <td class="px-4 py-3 whitespace-nowrap">Employment & Income</td>
-                                <td class="px-4 py-3 whitespace-nowrap">Centralized Automated Platform</td>
-                                <td class="px-4 py-3">Deep ERP integration, FCRA compliant. Not blockchain.</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-                 <p class="mt-6 text-slate-700 leading-relaxed">Our key differentiator is providing a **holistic verification solution for both education AND employment** on a unified, blockchain-powered platform, emphasizing Self-Sovereign Identity and advanced privacy features—a gap not fully addressed by current major players.</p>
-            </section>
+            
 
             <section id="product-vision" class="content-section">
                 <h2 class="text-3xl font-semibold text-sky-600 mb-4">Product Vision: Epics & Requirements</h2>
