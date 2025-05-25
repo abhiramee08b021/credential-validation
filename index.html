@@ -16,7 +16,6 @@
         - Our Solution (End-to-End Flow): Interactive HTML/CSS/JS diagram (Explain process). HTML/Tailwind/JS.
         - Current Landscape: Interactive HTML Table (Compare alternatives). HTML/Tailwind/JS.
         - Product Vision: Accordion for Epics/Requirements (Detail features). HTML/Tailwind/JS.
-        - Technical Deep Dive: Thematic text blocks (Explain tech). HTML/Tailwind.
         - Strategic Recommendations: Numbered list (Summarize advice). HTML/Tailwind.
         - CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
     <style>
@@ -118,8 +117,7 @@
                 <a href="#current-landscape" class="sidebar-link">Current Landscape</a>
                 <a href="#our-solution" class="sidebar-link">Our Solution</a>
                 <a href="#product-vision" class="sidebar-link">Product Vision</a>
-                <a href="#technical-deep-dive" class="sidebar-link">Technical Deep Dive</a>
-                <a href="#strategic-recommendations" class="sidebar-link">Strategic Recommendations</a>
+                <a href="#deeper-dive" class="sidebar-link">Deeper Dive</a>
             </nav>
         </aside>
 
@@ -412,37 +410,10 @@
                     </div>
             </section>
 
-            <section id="technical-deep-dive" class="content-section">
-                <h2 class="text-3xl font-semibold text-sky-600 mb-4">Technical Deep Dive</h2>
-                <p class="mb-6 text-lg leading-relaxed">The platform will be built on a robust technical architecture leveraging blockchain, DIDs/VCs, advanced privacy techniques, and scalable cloud infrastructure.</p>
-                <div class="space-y-6">
-                    <div class="bg-white p-6 rounded-lg shadow">
-                        <h3 class="text-xl font-semibold text-emerald-600 mb-2">1. Blockchain & Architecture</h3>
-                        <p>Hybrid approach: Public blockchain (e.g., Ethereum L2) for anchoring credential hashes (immutability, public verifiability), and a permissioned ledger (e.g., Hyperledger Fabric) for sensitive metadata and access controls.</p>
-                    </div>
-                    <div class="bg-white p-6 rounded-lg shadow">
-                        <h3 class="text-xl font-semibold text-emerald-600 mb-2">2. DIDs & Verifiable Credentials (VCs)</h3>
-                        <p>Adherence to W3C standards. Issuers and Individuals have unique DIDs. Credentials issued as cryptographically signed VCs, controlled by the Individual.</p>
-                    </div>
-                    <div class="bg-white p-6 rounded-lg shadow">
-                        <h3 class="text-xl font-semibold text-emerald-600 mb-2">3. Privacy Enhancements (SSI & ZKPs)</h3>
-                        <p>Selective disclosure allows users to share only necessary attributes. Zero-Knowledge Proofs (ZKPs) enable proving claims without revealing underlying data, aligning with Hyperledger AnonCreds principles.</p>
-                    </div>
-                    <div class="bg-white p-6 rounded-lg shadow">
-                        <h3 class="text-xl font-semibold text-emerald-600 mb-2">4. API Architecture & Integration</h3>
-                        <p>Secure RESTful APIs with OAuth 2.0. Issuer Write API for SIS/HRIS integration. Verifier Read API for ATS/HR platform integration. Standardized data formats (JSON/XML).</p>
-                    </div>
-                    <div class="bg-white p-6 rounded-lg shadow">
-                        <h3 class="text-xl font-semibold text-emerald-600 mb-2">5. Platform Components & Security</h3>
-                        <p>Cloud-native (e.g., AWS) microservices architecture. Components: Issuance Module, Individual Wallet, Verification Service, Integration Gateway, Admin Dashboard. End-to-end encryption, RBAC, consent management, regular security audits (SOC2 Type 2).</p>
-                    </div>
-                     <div class="bg-white p-6 rounded-lg shadow">
-                        <h3 class="text-xl font-semibold text-emerald-600 mb-2">6. Scalability & Compliance</h3>
-                        <p>Designed for high availability and rapid response. Compliance by design with GDPR, FERPA, FCRA. Immutable audit trails via blockchain.</p>
-                    </div>
-                </div>
+            <section id="deeper-dive" class="content-selection>
+                
             </section>
-
+            
             <section id="strategic-recommendations" class="content-section">
                 <h2 class="text-3xl font-semibold text-sky-600 mb-4">Strategic Recommendations & Conclusions</h2>
                 <p class="mb-6 text-lg leading-relaxed">To maximize market impact and achieve long-term success, we recommend focusing on a holistic value proposition, championing SSI, ensuring interoperability, and adopting a phased market entry.</p>
@@ -554,9 +525,9 @@
                     ]
                 },
                 {
-                    title: "Epic 2: Individual Wallet & Management",
+                    title: "Epic 2: Individual Profile & Management",
                     requirements: [
-                        "PR.2.1. Secure Digital Wallet (mobile/web) for individuals.",
+                        "PR.2.1. Secure Digital Profile (mobile/web) for individuals.",
                         "PR.2.2. View and access e-degrees/transcripts/employment records.",
                         "PR.2.3. Selective disclosure functionality for privacy.",
                         "PR.2.4. Generation of unique, time-limited URLs/QR codes for sharing.",
@@ -587,7 +558,8 @@
                         "PR.6.1. End-to-end encryption of data in transit and at rest.",
                         "PR.6.2. Role-Based Access Control (RBAC).",
                         "PR.6.3. Built-in features for GDPR, FERPA, FCRA compliance.",
-                        "PR.6.4. Immutable audit trails via blockchain."
+                        "PR.6.4. Immutable audit trails via blockchain.",
+                        "PR.6.5. Adherence to W3C standards such as Verifiable Credentials (VCs)"
                     ]
                 }
             ];
