@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Company Portal: Credential Verification</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+       .sidebar-link { display: block; padding: 0.75rem 1rem; margin-bottom: 0.5rem; border-radius: 0.5rem; transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out; }
+       .sidebar-link:hover { background-color: #e2e8f0; color: #0284c7; }
+       .sidebar-link.active { background-color: #0ea5e9; color: white; }
+       .verification-result-card { background-color: #f8fafc; border: 1px solid #e2e8f0; border-radius: 0.5rem; padding: 1rem; margin-bottom: 1rem; box-shadow: 0 1px 2px rgba(0,0,0,0.05); }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800">
+    <div class="flex flex-col md:flex-row min-h-screen">
+        <aside class="w-full md:w-64 bg-white p-4 shadow-lg md:sticky md:top-0 md:h-screen overflow-y-auto">
+            <h1 class="text-2xl font-bold text-sky-600 mb-6 border-b border-slate-300 pb-3">HR Portal</h1>
+            <nav>
+                <a href="#" class="sidebar-link active">New Verification</a>
+                <a href="#" class="sidebar-link">Verification History</a>
+                <a href="#" class="sidebar-link">API Integration</a>
+                <a href="#" class="sidebar-link">Settings</a>
+            </nav>
+        </aside>
+
+        <main class="flex-1 p-6 md:p-10 overflow-y-auto">
+            <h2 class="text-3xl font-semibold text-sky-600 mb-6">New Credential Verification</h2>
+
+            <div class="bg-white p-8 rounded-lg shadow-md mb-8">
+                <h3 class="text-xl font-semibold text-emerald-600 mb-4">Initiate Verification Request</h3>
+                <p class="text-slate-700 mb-4">Enter candidate details or a shared verification link to instantly validate credentials. [3, 2]</p>
+                <form class="grid grid-cols-1 gap-6">
+                    <div>
+                        <label for="verificationMethod" class="block text-sm font-medium text-slate-700 mb-1">Verification Method</label>
+                        <select id="verificationMethod" class="mt-1 block w-full border border-slate-300 rounded-md shadow-sm p-2 focus:ring-sky-500 focus:border-sky-500" onchange="toggleVerificationInputs()">
+                            <option value="link">Use Shared Verification Link/QR Code</option>
+                            <option value="details">Enter Candidate Details (Request from Issuer)</option>
+                        </select>
+                    </div>
+
+                    <div id="linkInput" class="mb-4">
+                        <label for="sharedLink" class="block text-sm font-medium text-slate-700 mb-1">Shared Verification Link</label>
+                        <input type="text" id="sharedLink" class="mt-1 block w-full border border-slate-300 rounded-md shadow-sm p-2 focus:ring-sky-500 focus:border-sky-500" placeholder="e.g., https://yourwallet.com/verify/john-doe-bsc-comp-sci-xyz123">
+                    </div>
+
+                    <div id="detailsInput" class="hidden grid grid-cols-1 md:grid-cols-2 gap-6 mb-4">
+                        <div>
+                            <label for="candidateName" class="block text-sm font-medium text-slate-700 mb-1">Candidate Full Name</label>
+                            <input type="text" id="candidateName" class="mt-1 block w-full border border-slate-300 rounded-md shadow-sm p-2 focus:ring-sky-500 focus:border-sky-500" placeholder="John Doe">
+                        </div>
+                        <div>
+                            <label for="institutionName" class="block text-sm font-medium text-slate-700 mb-1">University/Previous Employer Name</label>
+                            <input type="text" id="institutionName" class="mt-1 block w-full border border-slate-300 rounded-md shadow-sm p-2 focus:ring-sky-500 focus:border-sky-500" placeholder="University of Example">
+                        </div>
+                        <div class="md:col-span-2">
+                            <label for="credentialToVerify" class="block text-sm font-medium text-slate-700 mb-1">Credential to Verify</label>
+                            <input type="text" id="credentialToVerify" class="mt-1 block w-full border border-slate-300 rounded-md shadow-sm p-2 focus:ring-sky-500 focus:border-sky-500" placeholder="Bachelor of Science in Computer Science">
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <button type="submit" class="w-full bg-sky-600 hover:bg-sky-700 text-white font-bold py-2 px-4 rounded-md transition duration-300" onclick="performVerification()">Verify Credential</button>
+                    </div>
+                </form>
+                <p class="text-sm text-slate-500 mt-4 text-center">
+                    Our API allows seamless integration with your existing HR/ATS systems for automated verification workflows. [3, 6]
+                </p>
+            </div>
+
+            <h3 class="text-2xl font-semibold text-sky-600 mb-4">Verification Results</h3>
+            <div id="verificationResults" class="bg-white p-6 rounded-lg shadow-md">
+                <div class="verification-result-card">
+                    <div class="flex justify-between items-center mb-2">
+                        <h4 class="text-lg font-semibold text-slate-900">Verification for John Doe (Degree)</h4>
+                        <span class="text-sm text-green-600 font-medium">VERIFIED <span class="text-green-600">&#10003;</span></span>
+                    </div>
+                    <p class="text-slate-700 mb-1"><span class="font-semibold">Credential Type:</span> Bachelor of Science</p>
+                    <p class="text-slate-700 mb-1"><span class="font-semibold">Major:</span> Computer Science</p>
+                    <p class="text-slate-700 mb-1"><span class="font-semibold">Institution:</span> University of Example</p>
+                    <p class="text-slate-700 mb-1"><span class="font-semibold">Graduation Date:</span> May 25, 2025</p>
+                    <p class="text-slate-700 mb-1"><span class="font-semibold">GPA:</span> *Not Disclosed (Selective Disclosure)*</p>
+                    <p class="text-sm text-slate-500 mt-2">
+                        <span class="font-semibold">Verification Timestamp:</span> May 25, 2025, 2:30 PM GMT<br>
+                        <span class="font-semibold">Blockchain Transaction ID:</span> 0xdef456ghi789...<br>
+                        <span class="font-semibold">Issuer DID:</span> did:ex:uni123...
+                    </p>
+                    <p class="text-xs text-slate-400 mt-4">This credential was cryptographically verified against the blockchain. [2]</p>
+                </div>
+
+                <div class="verification-result-card">
+                    <div class="flex justify-between items-center mb-2">
+                        <h4 class="text-lg font-semibold text-slate-900">Verification for John Doe (Employment)</h4>
+                        <span class="text-sm text-green-600 font-medium">VERIFIED <span class="text-green-600">&#10003;</span></span>
+                    </div>
+                    <p class="text-slate-700 mb-1"><span class="font-semibold">Company:</span> TechCorp Inc.</p>
+                    <p class="text-slate-700 mb-1"><span class="font-semibold">Job Title:</span> Software Engineer</p>
+                    <p class="text-slate-700 mb-1"><span class="font-semibold">Employment Dates:</span> Jan 2022 - Present</p>
+                    <p class="text-slate-700 mb-1"><span class="font-semibold">Reason for Leaving:</span> *Not Disclosed (Selective Disclosure)*</p>
+                    <p class="text-sm text-slate-500 mt-2">
+                        <span class="font-semibold">Verification Timestamp:</span> May 25, 2025, 2:31 PM GMT<br>
+                        <span class="font-semibold">Blockchain Transaction ID:</span> 0xabc123def456...<br>
+                        <span class="font-semibold">Issuer DID:</span> did:ex:emp456...
+                    </p>
+                    <p class="text-xs text-slate-400 mt-4">This credential was cryptographically verified against the blockchain. [2]</p>
+                </div>
+
+                <div class="verification-result-card bg-red-50">
+                    <div class="flex justify-between items-center mb-2">
+                        <h4 class="text-lg font-semibold text-slate-900">Verification for Jane Smith (Degree)</h4>
+                        <span class="text-sm text-red-600 font-medium">DISCREPANCY <span class="text-red-600">&#x2716;</span></span>
+                    </div>
+                    <p class="text-slate-700 mb-1"><span class="font-semibold">Claimed:</span> Bachelor of Arts, University of Fictional, 2020</p>
+                    <p class="text-slate-700 mb-1"><span class="font-semibold">Verified:</span> No record found for Jane Smith at University of Fictional for claimed period. [7]</p>
+                    <p class="text-sm text-slate-500 mt-2">
+                        <span class="font-semibold">Verification Timestamp:</span> May 25, 2025, 2:32 PM GMT<br>
+                        <span class="font-semibold">Blockchain Transaction ID:</span> N/A<br>
+                        <span class="font-semibold">Issuer DID:</span> N/A
+                    </p>
+                    <p class="text-xs text-slate-400 mt-4">Discrepancies are automatically flagged, reducing fraud risk. [7]</p>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        function toggleVerificationInputs() {
+            const method = document.getElementById('verificationMethod').value;
+            document.getElementById('linkInput').classList.toggle('hidden', method!== 'link');
+            document.getElementById('detailsInput').classList.toggle('hidden', method!== 'details');
+        }
+
+        function performVerification() {
+            alert('Verification initiated! Results will appear below shortly.');
+            // In a real application, this would trigger an API call to the backend
+            // and update the #verificationResults div with actual data.
+        }
+
+        // Initial state
+        toggleVerificationInputs();
+    </script>
+</body>
+</html>
